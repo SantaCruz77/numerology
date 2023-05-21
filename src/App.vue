@@ -1,7 +1,7 @@
 <script setup>
-import MainTodo from "./components/MainTodo.vue";
+import MainNumerology from "./components/MainNumerology.vue";
 </script>
 
 <template>
-  <main><MainTodo /></main>
+  <main><MainNumerology /></main>
 </template>
