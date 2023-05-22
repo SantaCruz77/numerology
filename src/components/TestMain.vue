@@ -2,35 +2,37 @@
 import { ref } from "vue";
 
 const nameRef = ref("");
-const nameListRef = ref([]);
-const ls = localStorage.nameList;
+const nameListRef = ref(getStoredNameList());
 
-nameListRef.value = ls ? JSON.parse(ls) : [];
+const getStoredNameList = () => {
+  const storedList = localStorage.getItem("nameList");
+  return storedList ? JSON.parse(storedList) : [];
+};
 
-const cal = (value) => {
+const storeNameList = () => {
+  localStorage.setItem("nameList", JSON.stringify(nameListRef.value));
+};
+
+const calculateName = (value) => {
   return value * 3;
 };
 
-const setName = () => {
+const addName = () => {
   const id = new Date().getTime();
-  const calculatedName = cal(nameRef.value);
-  nameListRef.value.push({
-    id: id,
-    name: calculatedName,
-  });
-  localStorage.nameList = JSON.stringify(nameListRef.value);
+  const calculatedName = calculateName(nameRef.value);
+  nameListRef.value.push({ id, name: calculatedName });
+  storeNameList();
   nameRef.value = "";
 };
 
 const deleteName = (id) => {
-  const name = nameListRef.value.find((name) => name.id === id);
-  const idx = nameListRef.value.findIndex((name) => name.id === id);
+  const nameIndex = nameListRef.value.findIndex((name) => name.id === id);
+  const nameToDelete = nameListRef.value[nameIndex];
 
-  const delMsg = "「" + name.name + "」を削除しますか？";
-  if (!confirm(delMsg)) return;
-
-  nameListRef.value.splice(idx, 1);
-  localStorage.nameList = JSON.stringify(nameListRef.value);
+  if (confirm(`「${nameToDelete.name}」を削除しますか？`)) {
+    nameListRef.value.splice(nameIndex, 1);
+    storeNameList();
+  }
 };
 </script>
 
