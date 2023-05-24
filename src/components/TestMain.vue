@@ -10,27 +10,27 @@ const getStoredNameList = () => {
 };
 
 const storeNameList = () => {
-  localStorage.setItem("nameList", JSON.stringify(nameListRef.value));
+  localStorage.setItem("nameList", JSON.stringify(nameListRef.element));
 };
 
-const calculateName = (value) => {
-  return value * 3;
+const calculateName = (element) => {
+  return element * 3;
 };
 
 const addName = () => {
   const id = new Date().getTime();
-  const calculatedName = calculateName(nameRef.value);
-  nameListRef.value.push({ id, name: calculatedName });
+  const calculatedName = calculateName(nameRef.element);
+  nameListRef.element.push({ id, name: calculatedName });
   storeNameList();
-  nameRef.value = "";
+  nameRef.element = "";
 };
 
 const deleteName = (id) => {
-  const nameIndex = nameListRef.value.findIndex((name) => name.id === id);
-  const nameToDelete = nameListRef.value[nameIndex];
+  const nameIndex = nameListRef.element.findIndex((name) => name.id === id);
+  const nameToDelete = nameListRef.element[nameIndex];
 
   if (confirm(`「${nameToDelete.name}」を削除しますか？`)) {
-    nameListRef.value.splice(nameIndex, 1);
+    nameListRef.element.splice(nameIndex, 1);
     storeNameList();
   }
 };

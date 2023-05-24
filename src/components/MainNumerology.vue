@@ -5,15 +5,50 @@ const nameRef = ref("");
 const nameListRef = ref([]);
 const ls = localStorage.nameList;
 
-nameListRef.value = ls ? JSON.parse(ls) : [];
+nameListRef.element = ls ? JSON.parse(ls) : [];
 
 const cal = (value) => {
-  return value * 3;
+  value = value.toUpperCase();
+  let valueArray = value.split("");
+  return valueArray;
+  // for (let index = 0; index < valueArray.length; index++) {
+  //   const element = valueArray[index];
+
+  //   if ((element === "A") | (element === "J") | (element === "S")) {
+  //     element = 1;
+  //   }
+  //   if ((element === "B") | (element === "K") | (element === "T")) {
+  //     element = 2;
+  //   }
+  //   if ((element === "C") | (element === "L") | (element === "U")) {
+  //     element = 3;
+  //   }
+  //   if ((element === "D") | (element === "M") | (element === "V")) {
+  //     element = 4;
+  //   }
+  //   if ((element === "E") | (element === "N") | (element === "W")) {
+  //     element = 5;
+  //   }
+  //   if ((element === "F") | (element === "O") | (element === "X")) {
+  //     element = 6;
+  //   }
+  //   if ((element === "G") | (element === "P") | (element === "Y")) {
+  //     element = 7;
+  //   }
+  //   if ((element === "H") | (element === "Q") | (element === "Z")) {
+  //     element = 8;
+  //   }
+  //   if ((element === "I") | (element === "R")) {
+  //     element = 9;
+  //   }
+  //   return element;
+  // }
 };
 
 const setName = () => {
   const id = new Date().getTime();
   const calculatedName = cal(nameRef.value);
+  console.log(calculatedName);
   nameListRef.value.push({
     id: id,
     name: calculatedName,
