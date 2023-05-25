@@ -7,10 +7,16 @@ const ls = localStorage.nameList;
 
 nameListRef.element = ls ? JSON.parse(ls) : [];
 
+let aaa = [];
 const cal = (value) => {
   value = value.toUpperCase();
   let valueArray = value.split("");
-  return valueArray;
+  for (let index = 0; index < valueArray.length; index++) {
+    if (valueArray[index] === "A") {
+      aaa.push(1);
+    }
+  }
+  return aaa;
   // for (let index = 0; index < valueArray.length; index++) {
   //   const element = valueArray[index];
 
