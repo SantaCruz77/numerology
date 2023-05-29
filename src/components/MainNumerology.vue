@@ -8,47 +8,76 @@ const ls = localStorage.nameList;
 nameListRef.element = ls ? JSON.parse(ls) : [];
 
 let aaa = [];
+
 const cal = (value) => {
+  aaa = [];
   value = value.toUpperCase();
   let valueArray = value.split("");
   for (let index = 0; index < valueArray.length; index++) {
-    if (valueArray[index] === "A") {
+    if (
+      (valueArray[index] === "A") |
+      (valueArray[index] === "J") |
+      (valueArray[index] === "S")
+    ) {
       aaa.push(1);
     }
+    if (
+      (valueArray[index] === "B") |
+      (valueArray[index] === "K") |
+      (valueArray[index] === "T")
+    ) {
+      aaa.push(2);
+    }
+    if (
+      (valueArray[index] === "C") |
+      (valueArray[index] === "L") |
+      (valueArray[index] === "U")
+    ) {
+      aaa.push(3);
+    }
+    if (
+      (valueArray[index] === "D") |
+      (valueArray[index] === "M") |
+      (valueArray[index] === "V")
+    ) {
+      aaa.push(4);
+    }
+    if (
+      (valueArray[index] === "E") |
+      (valueArray[index] === "N") |
+      (valueArray[index] === "W")
+    ) {
+      aaa.push(5);
+    }
+    if (
+      (valueArray[index] === "F") |
+      (valueArray[index] === "O") |
+      (valueArray[index] === "X")
+    ) {
+      aaa.push(6);
+    }
+    if (
+      (valueArray[index] === "G") |
+      (valueArray[index] === "P") |
+      (valueArray[index] === "Y")
+    ) {
+      aaa.push(7);
+    }
+    if (
+      (valueArray[index] === "H") |
+      (valueArray[index] === "Q") |
+      (valueArray[index] === "Z")
+    ) {
+      aaa.push(8);
+    }
+    if ((valueArray[index] === "I") | (valueArray[index] === "R")) {
+      aaa.push(9);
+    }
   }
-  return aaa;
-  // for (let index = 0; index < valueArray.length; index++) {
-  //   const element = valueArray[index];
-
-  //   if ((element === "A") | (element === "J") | (element === "S")) {
-  //     element = 1;
-  //   }
-  //   if ((element === "B") | (element === "K") | (element === "T")) {
-  //     element = 2;
-  //   }
-  //   if ((element === "C") | (element === "L") | (element === "U")) {
-  //     element = 3;
-  //   }
-  //   if ((element === "D") | (element === "M") | (element === "V")) {
-  //     element = 4;
-  //   }
-  //   if ((element === "E") | (element === "N") | (element === "W")) {
-  //     element = 5;
-  //   }
-  //   if ((element === "F") | (element === "O") | (element === "X")) {
-  //     element = 6;
-  //   }
-  //   if ((element === "G") | (element === "P") | (element === "Y")) {
-  //     element = 7;
-  //   }
-  //   if ((element === "H") | (element === "Q") | (element === "Z")) {
-  //     element = 8;
-  //   }
-  //   if ((element === "I") | (element === "R")) {
-  //     element = 9;
-  //   }
-  //   return element;
-  // }
+  return aaa.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 };
 
 const setName = () => {
